@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Try blockMesh
         run: |
-          source /root/.bashrc
+          . /root/.bashrc
           blockMesh
       - name: Install Dependencies
         run: |
@@ -46,7 +46,7 @@ jobs:
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Run tutorial
         run: |
-          source /root/.bashrc
+          . /root/.bashrc
           python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.experiment.args}}
       - name: Store logs
         if: always()
