@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Try blockMesh
+        run: |
+          source /root/.bashrc
+          blockMesh
       - name: Install Dependencies
         run: |
           apt-get -qq update
@@ -42,6 +46,7 @@ jobs:
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Run tutorial
         run: |
+          source /root/.bashrc
           python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.experiment.args}}
       - name: Store logs
         if: always()
