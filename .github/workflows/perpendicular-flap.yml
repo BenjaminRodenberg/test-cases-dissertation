@@ -21,9 +21,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Activate OpenFOAM
+        run: |
+          source "/usr/lib/openfoam/openfoam2412/etc/bashrc" || true
+          echo PATH=$PATH >> $GITHUB_ENV
+        shell: bash
       - name: Try blockMesh
         run: |
-          . /root/.bashrc
           blockMesh
       - name: Install Dependencies
         run: |
