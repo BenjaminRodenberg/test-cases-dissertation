@@ -25,9 +25,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--silent",
         help="Deactivates result output to command line",
-        type=bool,
-        action='store_true',
-    )
+        action='store_true')
     parser.add_argument(
         "-T",
         "--max-time",
