@@ -55,4 +55,5 @@ jobs:
         with:
           name: results
           path: |
-            convergence-studies/*
+            # working directory is ignored by actions/upload-artifact
+            ./oscillator-overlap/convergence-studies
