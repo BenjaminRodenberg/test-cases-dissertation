@@ -60,3 +60,11 @@ jobs:
           path: |
             # working directory is ignored by actions/upload-artifact
             ./oscillator-overlap/convergence-studies
+  merge:
+    runs-on: ubuntu-latest
+    needs: run_experiments
+    steps:
+      - name: Merge results
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: oscillator-overlap
