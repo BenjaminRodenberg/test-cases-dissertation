@@ -29,7 +29,13 @@ jobs:
       - name: Create venv
         run: |
           ./make-venv.sh
-      - name: Activate venv
+      - name: Create venv for solid-fenics
+        run: |
+          cd solid-fenics
+          python3 -m venv --system-site-packages .venv
+          . .venv/bin/activate
+          pip install -r requirements.txt
+      - name: Activate main venv
         # see https://stackoverflow.com/a/74669486
         run: |
           . .venv/bin/activate
