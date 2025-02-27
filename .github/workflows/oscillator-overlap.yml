@@ -55,7 +55,7 @@ jobs:
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
-          name: results_${{ matrix.name }}
+          name: oscillator-overlap ${{ matrix.name }}
           path: |
             # working directory is ignored by actions/upload-artifact
             ./oscillator-overlap/convergence-studies
