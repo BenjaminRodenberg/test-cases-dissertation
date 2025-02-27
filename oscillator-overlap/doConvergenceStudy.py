@@ -23,6 +23,12 @@ if __name__ == "__main__":
         type=str,
         default=None)
     parser.add_argument(
+        "--silent",
+        help="Deactivates result output to command line",
+        type=bool,
+        action='store_true',
+    )
+    parser.add_argument(
         "-T",
         "--max-time",
         help="Max simulation time",
@@ -145,6 +151,6 @@ if __name__ == "__main__":
         summary = postproc(participants, precice_config_params)
 
         results.append(summary)
-        results.output_preliminary()
+        results.output_preliminary(silent=args.silent)
     
-    results.output_final(participants, args, precice_config_params)
+    results.output_final(participants, args, precice_config_params, silent=args.silent)
