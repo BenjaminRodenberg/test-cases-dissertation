@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
+        shell: bash
         working-directory: ./perpendicular-flap
     container: benjaminrodenberg/fenics-openfoam
     steps:
@@ -25,10 +26,8 @@ jobs:
         run: |
           source "/usr/lib/openfoam/openfoam2412/etc/bashrc" || true
           echo PATH=$PATH >> $GITHUB_ENV
-        shell: bash
       - name: Try blockMesh
-        run: |
-          blockMesh
+        run: blockMesh
       - name: Install Dependencies
         run: |
           apt-get -qq update
