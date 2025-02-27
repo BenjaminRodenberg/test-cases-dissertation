@@ -10,9 +10,9 @@ jobs:
       matrix:
         experiment:
         - name: Table 6.1 QN-SC
-          args: 'precice-config-rQNWI-template.xml -o acceleration-studies/QN-SC.csv'
+          args: ' -o acceleration-studies/QN-SC.csv'
         - name: Table 6.1 rQN-WI
-          args: '--exchange-substeps precice-config-rQNWI-template.xml -o acceleration-studies/rQN-WI.csv'
+          args: '--exchange-substeps -o acceleration-studies/rQN-WI.csv'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -38,7 +38,7 @@ jobs:
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Run tutorial
         run: |
-          python3 doAccelerationStudy.py precice-config-template.xml --silent --executor Github ${{matrix.experiment.args}}
+          python3 doAccelerationStudy.py precice-config-rQNWI-template.xml --silent --executor Github ${{matrix.experiment.args}}
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
