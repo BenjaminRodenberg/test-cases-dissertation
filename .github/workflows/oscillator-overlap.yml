@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     container: precice/precice:nightly
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
       - name: Print gh context from python
         run: |
           python3 print_gh_context.py
