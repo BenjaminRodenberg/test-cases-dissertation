@@ -43,6 +43,14 @@ jobs:
       - name: Run tutorial
         run: |
           python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.experiment.args}}
+      - name: Store logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs ${{ matrix.experiment.name }}
+          path: |
+            perpendicular-flap/fluid-openfoam/stdout-Fluid.log
+            perpendicular-flap/solid-fenics/stdout-Solid.log
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
