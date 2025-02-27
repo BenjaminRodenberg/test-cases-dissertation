@@ -30,7 +30,7 @@ if __name__ == "__main__":
         "--executor",
         help="Define type of executor",
         type=str,
-        choices=(e.value for e in Executors),
+        choices=[e.value for e in Executors],
         default=Executors.LOCAL.value)
     parser.add_argument(
         "-T",
