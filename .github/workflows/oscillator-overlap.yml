@@ -7,9 +7,6 @@ on:
 jobs:
   get_gh_context:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./oscillator-overlap
     container: precice/precice:nightly
     steps:
       - name: Print gh context from python
