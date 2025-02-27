@@ -46,11 +46,13 @@ jobs:
           python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.args}}
       - name: Print some debug info
         run: |
+          echo "ls :"
           ls .
+          echo "ls convergence-studies:"
           ls convergence-studies
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
           name: results
           path: |
-            convergence-studies 
+            convergence-studies/*
