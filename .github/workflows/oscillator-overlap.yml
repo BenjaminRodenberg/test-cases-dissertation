@@ -8,6 +8,7 @@ jobs:
   run_experiments:
     strategy:
       matrix:
+        experiment:
         - name: Figure 6.1 RK4 GA
           args: '-tss runge_kutta_4 generalized_alpha -wd 3 -dt 0.05 -sb 4 4 -s 8 -sf 1 2 -w 1 -o convergence-studies/subcycling_rk4_ga.csv'
         - name: Figure 6.1 RK4 RK4
@@ -51,11 +52,11 @@ jobs:
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Run tutorial
         run: |
-          python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.args}}
+          python3 doConvergenceStudy.py precice-config-template.xml --silent --executor Github ${{matrix.experiment.args}}
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
-          name: oscillator-overlap ${{ matrix.name }}
+          name: oscillator-overlap ${{ matrix.experiment.name }}
           path: |
             # working directory is ignored by actions/upload-artifact
             ./oscillator-overlap/convergence-studies
