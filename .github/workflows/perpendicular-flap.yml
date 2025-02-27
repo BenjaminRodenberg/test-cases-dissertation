@@ -25,6 +25,7 @@ jobs:
       - name: Activate OpenFOAM
         run: |
           source "/usr/lib/openfoam/openfoam2412/etc/bashrc" || true
+          echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH >> $GITHUB_ENV
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Try blockMesh
         run: blockMesh
