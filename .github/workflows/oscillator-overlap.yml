@@ -30,7 +30,7 @@ jobs:
           echo PATH=$PATH >> $GITHUB_ENV
       - name: Run tutorial
         run: |
-          ./convergence-study.sh
+          ./convergence_study.sh
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
