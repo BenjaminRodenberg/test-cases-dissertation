@@ -18,6 +18,7 @@ jobs:
       run:
         shell: bash
         working-directory: ./perpendicular-flap
+    # built using tools/docker/fenics-openfoam/Dockerfile
     container: benjaminrodenberg/fenics-openfoam
     steps:
       - name: Checkout Repository
