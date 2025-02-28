@@ -152,7 +152,7 @@ if __name__ == "__main__":
             p.kwargs['--n-substeps'] = substeps 
 
         run(participants, args.template_path, precice_config_params)
-        summary = postproc(participants, precice_config_params)
+        summary = postproc(participants, precice_config_params, silent=args.silent)
 
         results.append(summary)
         results.output_preliminary(silent=args.silent)
