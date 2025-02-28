@@ -40,11 +40,6 @@ jobs:
           echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
 
           echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          detached: true
-          limit-access-to-actor: true
       - name: Install Dependencies
         run: |
           apt-get -qq update
