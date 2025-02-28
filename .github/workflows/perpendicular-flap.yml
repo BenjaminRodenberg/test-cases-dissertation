@@ -22,13 +22,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Check user
-        run: whoami
-      - name: Install sudo
-        run: |
-          apt-get -qq update
-          apt-get -qq install sudo
-          rm -rf /var/lib/apt/lists/*
       - name: Update $HOME
         run: echo "HOME=/root" >> "$GITHUB_ENV"
       - name: Activate OpenFOAM # From https://github.com/gerlero/setup-openfoam/blob/68e0bf96c7f2aac1a100291a5d61fff934a472a8/action.yml#L54-L69
@@ -47,16 +40,6 @@ jobs:
           echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
 
           echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
-      - name: Print some debug output
-        # problematic: export WM_PROJECT_USER_DIR="$HOME/$WM_PROJECT/${USER:-user}-$WM_PROJECT_VERSION"
-        run: |
-          echo $WM_PROJECT_USER_DIR
-          echo $HOME
-          echo $WM_PROJECT
-          echo $USER
-          echo $WM_PROJECT_VERSION
-      - name: Check user
-        run: whoami
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         with:
