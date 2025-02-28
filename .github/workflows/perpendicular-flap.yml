@@ -29,10 +29,6 @@ jobs:
           apt-get -qq install git apt-utils pkg-config 
           apt-get -qq install sudo curl tmux
           rm -rf /var/lib/apt/lists/*
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
       - name: Create venv
         run: |
           ./make-venv.sh
@@ -58,10 +54,14 @@ jobs:
           echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
 
           echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
-      # - name: Try blockMesh
-      #   run: blockMesh
-      # - name: Try jinja2
-      #   run: python3 -c "import jinja2"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
+      - name: Try blockMesh
+        run: blockMesh
+      - name: Try jinja2
+        run: python3 -c "import jinja2"
   merge:
     runs-on: ubuntu-latest
     needs: run_experiments
