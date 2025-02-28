@@ -26,6 +26,8 @@ jobs:
         run: whoami
       - name: Activate OpenFOAM # From https://github.com/gerlero/setup-openfoam/blob/68e0bf96c7f2aac1a100291a5d61fff934a472a8/action.yml#L54-L69
         run: |
+          sudo sh -c "echo HOME=/root >> $GITHUB_ENV"
+
           old_path="$PATH"
           source /usr/lib/openfoam/openfoam2412/etc/bashrc || true
 
