@@ -24,6 +24,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Check user
         run: whoami
+      - name: Install sudo
+        run: |
+          apt-get -qq update
+          apt-get -qq install sudo
+          rm -rf /var/lib/apt/lists/*
       - name: Activate OpenFOAM # From https://github.com/gerlero/setup-openfoam/blob/68e0bf96c7f2aac1a100291a5d61fff934a472a8/action.yml#L54-L69
         run: |
           sudo sh -c "echo HOME=/root >> $GITHUB_ENV"
