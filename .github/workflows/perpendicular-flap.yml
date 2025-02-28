@@ -36,16 +36,26 @@ jobs:
           python3 -m venv --system-site-packages .venv
           . .venv/bin/activate
           pip install -r requirements.txt
-      - name: Activate main venv
-        # see https://stackoverflow.com/a/74669486
+      - name: Activate main venv # see https://stackoverflow.com/a/74669486
         run: |
           . .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
-      - name: Activate OpenFOAM
+      - name: Activate OpenFOAM # From https://github.com/gerlero/setup-openfoam/blob/68e0bf96c7f2aac1a100291a5d61fff934a472a8/action.yml#L54-L69
         run: |
-          source "/usr/lib/openfoam/openfoam2412/etc/bashrc" || true
-          echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH >> $GITHUB_ENV
-          echo PATH=$PATH >> $GITHUB_ENV
+          old_path="$PATH"
+          source "/usr/lib/openfoam/openfoam2412/etc/bashrc"
+
+          for var in "${!WM_@}"; do
+            echo "$var=${!var}" >> "$GITHUB_ENV"
+          done
+
+          for var in "${!FOAM_@}"; do
+            echo "$var=${!var}" >> "$GITHUB_ENV"
+          done
+
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
+
+          echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
       - name: Run tutorial
         run: |
           . /root/.bashrc
