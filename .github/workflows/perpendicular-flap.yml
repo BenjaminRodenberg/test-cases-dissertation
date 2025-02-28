@@ -27,14 +27,10 @@ jobs:
           apt-get -qq update
           apt-get -qq install python3-dev python3-pip python3.12-venv
           apt-get -qq install git apt-utils pkg-config 
-          apt-get -qq install sudo curl
+          apt-get -qq install sudo curl tmux
           rm -rf /var/lib/apt/lists/*
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        with:
-          ## limits ssh access and adds the ssh public key for the user which triggered the workflow
-          limit-access-to-actor: true
-          ## limits ssh access and adds the ssh public keys of the listed GitHub users
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
           limit-access-to-users: benjaminrodenberg
       - name: Create venv
         run: |
