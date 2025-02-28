@@ -31,7 +31,8 @@ jobs:
           rm -rf /var/lib/apt/lists/*
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
-          limit-access-to-users: benjaminrodenberg
+        with:
+          limit-access-to-actor: true
       - name: Create venv
         run: |
           ./make-venv.sh
