@@ -189,7 +189,7 @@ if __name__ == "__main__":
                 i += 1
 
             run(participants, args.template_path, precice_config_params)
-            summary = postproc(participants, precice_config_params, silent=args.silent)
+            summary = postproc(participants, precice_config_params)
 
             results.append(summary)
             results.output_preliminary(silent=args.silent)
