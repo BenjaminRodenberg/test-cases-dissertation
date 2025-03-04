@@ -1,8 +1,5 @@
 name: Run partitioned-heat-acceleration experiments
-on:
-  push:
-    branches:
-      - use-github-actions-for-diss-cases
+on: workflow_dispatch
 
 jobs:
   run_experiments:
