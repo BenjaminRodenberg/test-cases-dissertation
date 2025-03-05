@@ -37,6 +37,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+          limit-access-to-actor: true
       - name: Activate OpenFOAM # From https://github.com/gerlero/setup-openfoam/blob/68e0bf96c7f2aac1a100291a5d61fff934a472a8/action.yml#L54-L69
         run: |
           old_path="$PATH"
