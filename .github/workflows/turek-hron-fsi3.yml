@@ -1,0 +1,58 @@
+name: Run turek-hron-fsi3 experiments
+on:
+  push:
+    branches:
+    - ci-turek-hron-fsi3
+
+  # release:
+  #   types: [published]
+  # workflow_dispatch:
+
+jobs:
+  run_experiments:
+    strategy:
+      matrix:
+        experiment:
+        - name: Figure 6.8 FEniCS-OpenFOAM legacy
+          solid-participant: fenics
+          solid-run: run_legacy.sh
+          container: benjaminrodenberg/fenics-openfoam
+          id: legacy
+        # - name: Figure 6.8 FEniCS-OpenFOAM WI
+        #   solid-participant: fenics
+        #   solid-run: run_WI.sh
+        #   container: benjaminrodenberg/fenics-openfoam
+        #   id: WI
+        # - name: Figure 6.8 deal.II-OpenFOAM nonlin
+        #   solid-participant: dealii
+        #   solid-run: run.sh
+        #   container: benjaminrodenberg/dealii-openfoam
+        #   id: nonlin
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./turek-hron-fsi3
+    container: {{ $matrix.experiment.container }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Run tutorial
+        run: |
+            ./prep_{{ $matrix.experiment.solid-participant }}.sh
+            (cd ./solid-{{ $matrix.experiment.solid-participant }} && ./{{ $matrix.experiment.solid-run }}.sh) & (cd ./fluid-openfoam && ./run.sh)
+            cp ./solid-{{ $matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-{{ $matrix.experiment.id }}.log
+      - name: Store results
+        uses: actions/upload-artifact@v4
+        with:
+          name: turek-hron-fsi3 ${{ matrix.experiment.name }}
+          path: |
+            # working directory is ignored by actions/upload-artifact
+            ./turek-hron-fsi3/studies
+  merge:
+    runs-on: ubuntu-latest
+    needs: run_experiments
+    steps:
+      - name: Merge results
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: turek-hron-fsi3
