@@ -62,7 +62,7 @@ jobs:
         run: |
             su precice  # OpenFOAM must not be run by root
             ./prep_${{ matrix.experiment.solid-participant }}.sh
-            (cd ./solid-${{ matrix.experiment.solid-participant }} && ./${{ matrix.experiment.solid-run }}) & (cd ./fluid-openfoam && python3 -c "import subprocess; subprocess.run('./run.sh')")
+            (cd ./solid-${{ matrix.experiment.solid-participant }} && ./${{ matrix.experiment.solid-run }}) & (cd ./fluid-openfoam && python3 -m venv --system-site-packages .venv && . .venv/bin/activate && python3 -c "import subprocess; subprocess.run('./run.sh')")
             cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
       - name: Store results
         uses: actions/upload-artifact@v4
