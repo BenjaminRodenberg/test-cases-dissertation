@@ -13,16 +13,16 @@ jobs:
     strategy:
       matrix:
         experiment:
-        - name: Figure 6.8 FEniCS-OpenFOAM legacy
-          solid-participant: fenics
-          solid-run: run_legacy.sh
-          container: benjaminrodenberg/fenics-openfoam
-          id: legacy
-        # - name: Figure 6.8 FEniCS-OpenFOAM WI
+        # - name: Figure 6.8 FEniCS-OpenFOAM legacy
         #   solid-participant: fenics
-        #   solid-run: run_WI.sh
+        #   solid-run: run_legacy.sh
         #   container: benjaminrodenberg/fenics-openfoam
-        #   id: WI
+        #   id: legacy
+        - name: Figure 6.8 FEniCS-OpenFOAM WI
+          solid-participant: fenics
+          solid-run: run_WI.sh
+          container: benjaminrodenberg/fenics-openfoam
+          id: WI
         # - name: Figure 6.8 deal.II-OpenFOAM nonlin
         #   solid-participant: dealii
         #   solid-run: run.sh
