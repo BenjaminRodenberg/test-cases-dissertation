@@ -55,6 +55,7 @@ jobs:
           echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
       - name: Run tutorial
         run: |
+            su precice
             ./prep_${{ matrix.experiment.solid-participant }}.sh
             (cd ./solid-${{ matrix.experiment.solid-participant }} && ./${{ matrix.experiment.solid-run }}.sh) & (cd ./fluid-openfoam && ./run.sh)
             cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
