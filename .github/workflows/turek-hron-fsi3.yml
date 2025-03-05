@@ -53,6 +53,11 @@ jobs:
           echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
 
           echo "${PATH/%:$old_path}" >> "$GITHUB_PATH"
+      - name: Install Dependencies
+        run: |
+          apt-get -qq update
+          apt-get -qq install python3-dev python3-pip python3-venv git apt-utils pkg-config
+          rm -rf /var/lib/apt/lists/*
       - name: Run tutorial
         run: |
             su precice  # OpenFOAM must not be run by root
