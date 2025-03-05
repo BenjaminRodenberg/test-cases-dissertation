@@ -69,6 +69,7 @@ jobs:
               ./${{ matrix.experiment.solid-run }}
             ) &
             (
+              chown -R precice . &&
               cd ./fluid-openfoam && 
               su precice -c './run.sh'
             )
