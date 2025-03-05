@@ -60,16 +60,16 @@ jobs:
           rm -rf /var/lib/apt/lists/*
       - name: Run tutorial
         run: |
-            ./prep_${{ matrix.experiment.solid-participant }}.sh
             # start two processes in parallel
-            # 1) solid participant
+            # 1) solid participant and
+            # 2) fluid participant (OpenFOAM must not be run as root!)
+            ./prep_${{ matrix.experiment.solid-participant }}.sh
             ( 
               cd ./solid-${{ matrix.experiment.solid-participant }} 
               &&
               ./${{ matrix.experiment.solid-run }}
             )
             &
-            # 2) fluid participant (OpenFOAM must not be run as root!)
             (
               cd ./fluid-openfoam 
               && 
