@@ -71,7 +71,7 @@ jobs:
             (
               chown -R precice . &&
               cd ./fluid-openfoam && 
-              su precice -c './run.sh'
+              su precice -c 'source /usr/lib/openfoam/openfoam2412/etc/bashrc && ./run.sh'
             )
             cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
       - name: Store results
