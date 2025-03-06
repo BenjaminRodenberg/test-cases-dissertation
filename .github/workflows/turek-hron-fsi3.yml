@@ -84,7 +84,7 @@ jobs:
             )
       - name: Copy results to correct folder
         if: always()
-            cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
+        run: cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
