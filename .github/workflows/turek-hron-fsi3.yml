@@ -13,24 +13,24 @@ jobs:
     strategy:
       matrix:
         experiment:
-        - name: Figure 6.8 FEniCS-OpenFOAM legacy
-          solid-participant: fenics
-          solid-run: run_legacy.sh
-          container: benjaminrodenberg/fenics-openfoam
-          id: legacy
-          expects-error: true
+        # - name: Figure 6.8 FEniCS-OpenFOAM legacy
+        #   solid-participant: fenics
+        #   solid-run: run_legacy.sh
+        #   container: benjaminrodenberg/fenics-openfoam
+        #   id: legacy
+        #   expects-error: true
         # - name: Figure 6.8 FEniCS-OpenFOAM WI
         #   solid-participant: fenics
         #   solid-run: run_WI.sh
         #   container: benjaminrodenberg/fenics-openfoam
         #   id: WI
         #   expects-error: false
-        # - name: Figure 6.8 deal.II-OpenFOAM nonlin
-        #   solid-participant: dealii
-        #   solid-run: run.sh
-        #   container: benjaminrodenberg/dealii-openfoam
-        #   id: nonlin
-        #   expects-error: false
+        - name: Figure 6.8 deal.II-OpenFOAM nonlin
+          solid-participant: dealii
+          solid-run: run.sh
+          container: benjaminrodenberg/dealii-openfoam
+          id: nonlin
+          expects-error: false
     runs-on: ubuntu-latest
     defaults:
       run:
