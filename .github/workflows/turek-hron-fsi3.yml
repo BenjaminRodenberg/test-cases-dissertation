@@ -82,6 +82,8 @@ jobs:
               cd ./fluid-openfoam && 
               su precice -c 'source /usr/lib/openfoam/openfoam2412/etc/bashrc && ./run.sh'
             )
+      - name: Copy results to correct folder
+        if: always()
             cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
       - name: Store results
         uses: actions/upload-artifact@v4
