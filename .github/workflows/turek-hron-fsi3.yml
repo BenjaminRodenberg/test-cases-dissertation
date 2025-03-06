@@ -27,7 +27,7 @@ jobs:
         #   expects-error: false
         - name: Figure 6.8 deal.II-OpenFOAM nonlin
           solid-participant: dealii
-          solid-run: run.sh
+          solid-run: run.sh -e /dealii-adapter/elasticity
           container: benjaminrodenberg/dealii-openfoam
           id: nonlin
           expects-error: false
