@@ -1,5 +1,5 @@
 name: Run perpendicular-flap experiments
-on: 
+on:
   release:
     types: [published]
   workflow_dispatch:
