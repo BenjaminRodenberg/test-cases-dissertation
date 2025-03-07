@@ -1,8 +1,12 @@
 name: Run turek-hron-fsi3 experiments
 on:
-  release:
-    types: [published]
-  workflow_dispatch:
+  push:
+    branches:
+    - ci-turek-hron-fsi3
+
+  # release:
+  #   types: [published]
+  # workflow_dispatch:
 
 jobs:
   run_experiments:
@@ -27,7 +31,8 @@ jobs:
           container: benjaminrodenberg/dealii-openfoam
           id: nonlin
           expects-error: false
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
