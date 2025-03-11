@@ -1,12 +1,8 @@
 name: Run turek-hron-fsi3 experiments
 on:
-  push:
-    branches:
-    - ci-turek-hron-fsi3
-
-  # release:
-  #   types: [published]
-  # workflow_dispatch:
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   run_experiments:
