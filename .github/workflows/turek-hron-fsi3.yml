@@ -82,6 +82,12 @@ jobs:
       - name: Copy results to correct folder
         if: always()
         run: cp ./solid-${{ matrix.experiment.solid-participant }}/precice-Solid-watchpoint-Flap-Tip.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log
+      - name: Create file with reduced results (filter times < 2.5e-1 and times > 3.5e-1)
+        if: always()
+        run: |
+          cp ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}.log ./studies/precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}-detail.log
+          sed -i '2,251d' precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}-detail.log
+          sed -i '103,$d' precice-Solid-watchpoint-Flap-Tip-${{ matrix.experiment.id }}-detail.log
       - name: Store results
         uses: actions/upload-artifact@v4
         with:
