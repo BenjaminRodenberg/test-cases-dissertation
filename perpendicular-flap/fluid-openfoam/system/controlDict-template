@@ -17,7 +17,8 @@ stopAt          endTime;
 
 endTime         5;
 
-deltaT          {{ deltaT }};
+adjustTimeStep  yes;
+maxCo           0.5;
 
 writeControl    adjustableRunTime;
 
