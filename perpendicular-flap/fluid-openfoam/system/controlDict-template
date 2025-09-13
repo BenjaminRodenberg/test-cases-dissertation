@@ -17,7 +17,10 @@ stopAt          endTime;
 
 endTime         5;
 
-deltaT          {{ deltaT }};
+deltaT          0.00001;  // initial dt
+maxDeltaT       0.001;    // maximum allowed dt, make a parameter and set to value similar to window size?
+adjustTimeStep  yes;
+maxCo           0.5;
 
 writeControl    adjustableRunTime;
 
