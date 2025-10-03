@@ -1,5 +1,5 @@
-# participants version:{'Fluid': {'url': 'BenjaminRodenberg/test-cases-dissertation', 'repo': 'refs/pull/7/merge', 'chash': '9f8163a5f94ec84367a2a6ba464671a0e6b80c62'}, 'Solid': {'url': 'BenjaminRodenberg/test-cases-dissertation', 'repo': 'refs/pull/7/merge', 'chash': '9f8163a5f94ec84367a2a6ba464671a0e6b80c62'}}
-# participants:{'Fluid': <prepesthel.participant.Participant object at 0x7f13e8cf1370>, 'Solid': <prepesthel.participant.Participant object at 0x7f13e9c26b70>}
+# participants version:{'Fluid': {'url': 'BenjaminRodenberg/test-cases-dissertation', 'repo': 'refs/pull/7/merge', 'chash': 'fa966c24a77a623fe26fe103795f01733bc4c71c'}, 'Solid': {'url': 'BenjaminRodenberg/test-cases-dissertation', 'repo': 'refs/pull/7/merge', 'chash': 'fa966c24a77a623fe26fe103795f01733bc4c71c'}}
+# participants:{'Fluid': <prepesthel.participant.Participant object at 0x7fb85b7a9070>, 'Solid': <prepesthel.participant.Participant object at 0x7fb85b8a5e80>}
 # run cmd:python3 doConvergenceStudy.py precice-config.xml.jinja2 --silent --executor Github configs/Fig16.csv -o results/Fig16/data/result.csv
 # args:Namespace(template_path='precice-config.xml.jinja2', silent=True, executor='Github', time_config='configs/Fig16.csv', out_filename='results/Fig16/data/result.csv')
 # precice.get_version_information():b'3.2.0;no-info [git failed to run];PRECICE_FEATURE_MPI_COMMUNICATION=Y;PRECICE_FEATURE_PETSC_MAPPING=Y;PRECICE_FEATURE_GINKGO_MAPPING=N;PRECICE_FEATURE_PYTHON_ACTIONS=Y;PRECICE_BINDINGS_C=Y;PRECICE_BINDINGS_FORTRAN=Y;CXX=GNU;CXXFLAGS= -O3 -DNDEBUG;LDFLAGS='
