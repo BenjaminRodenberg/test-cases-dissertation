@@ -1,0 +1,6 @@
+  TimeWindow  TotalIterations  Iterations  Convergence
+     1     200     200       0
+     2     400     200       0
+     3     413      13       1
+     4     414       1       1
+     5     416       2       1
