@@ -1,6 +1,0 @@
-  TimeWindow  TotalIterations  Iterations  Convergence  QNColumns  DeletedQNColumns  DroppedQNColumns
-     1       9       9       1       7       1       0
-     2      14       5       1      11       0       0
-     3      18       4       1      12       2       0
-     4      22       4       1      15       0       0
-     5      28       6       1      19       1       0
