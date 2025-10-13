@@ -1,0 +1,7 @@
+DIRS := Fig10 Fig11 Tab1
+
+.PHONY: all $(MAKECMDGOALS) $(DIRS)
+$(MAKECMDGOALS) all: $(DIRS)
+
+$(DIRS):
+	$(MAKE) -C $@ $(MAKECMDGOALS)

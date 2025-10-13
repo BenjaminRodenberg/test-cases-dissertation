@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_dealii_openfoam:
-    name: "Build deal.ii-OpenFOAM"
+  build_precice_openfoam:
+    name: "Build preCICE 3.2.0 on top of opencfd/openfoam-dev:2412"
     runs-on: ubuntu-latest
     env:
         docker_username: benjaminrodenberg
@@ -20,10 +20,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          file: "./tools/docker/dealii-openfoam/Dockerfile"
-          tags: ${{ env.docker_username }}/dealii-openfoam:3.2.0
+          file: "./tools/docker/precice-openfoam/Dockerfile"
+          tags: ${{ env.docker_username }}/precice-openfoam:3.2.0  
   build_fenics_openfoam:
     name: "Build FEniCS-OpenFOAM"
+    needs: build_precice_openfoam
     runs-on: ubuntu-latest
     env:
         docker_username: benjaminrodenberg
