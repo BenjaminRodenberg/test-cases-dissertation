@@ -100,7 +100,7 @@ The test cases are forked from the [preCICE tutorials](https://github.com/precic
 * `run_experiments.sh` runs all experiments required for each study (convergence study, comparison of iteration numbers etc.). It is recommended to navigate to the respective folder and run this script.
 * Folder `configs` with `.csv` files defines configurations (e.g., time window sizes or time step sizes) for individual experiments.
 * Folder `results` will contain all relevant data for creation of the plots after running the experiments.
-* Python scripts `doConvergenceStudy.py` and `doConvergenceStudyMonolithic.py` are indirectly called by `run_experiments.sh` via the Python package [prepesthel](https://pypi.org/project/prepesthel/).
+* Python scripts `doConvergenceStudy.py` and `doConvergenceStudyMonolithic.py` are indirectly called by `run_experiments.sh` and use the Python package [prepesthel](https://pypi.org/project/prepesthel/) to execute multiple preCICE experiments and create reports with their results.
 * In contrast to the original preCICE tutorials, there is no `precice-config.xml`, but a `precice-config.xml.jinja2` Jinja2 template. This template is processed by the Jinja2 engine to create preCICE configuration files for the respective experiments.
 
 ### Example: Run experiments from Section 4.1

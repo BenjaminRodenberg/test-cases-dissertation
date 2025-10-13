@@ -4,7 +4,7 @@ This folder `plotting` contains the LaTeX sources and auxiliary scripts to creat
 
 ## Overview
 
-The subfolders refer to the test cases provided in *Section 4 Results* :
+The subfolders refer to the test cases provided in *Section 4 Results*:
 
 * `plotting/oscillator-overlap` corresponds to *Section 4.1 Partitioned oscillator*
 * `plotting/partitioned-heat-conduction` corresponds to *Section 4.2 Partitioned heat conduction*
